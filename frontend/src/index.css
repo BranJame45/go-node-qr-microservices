@@ -1,17 +1,19 @@
 :root {
-  --bg: #f1f5f9;
-  --surface: #ffffff;
-  --border: #e2e8f0;
-  --text: #0f172a;
-  --text-muted: #64748b;
-  --primary: #1e3a8a;
-  --primary-hover: #1e40af;
-  --primary-soft: #eff6ff;
-  --danger: #b91c1c;
-  --danger-soft: #fef2f2;
-  --danger-border: #fecaca;
-  --radius: 10px;
-  --shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 2px 8px rgba(15, 23, 42, 0.06);
+  --bg: #0b1120;
+  --surface: #151c2c;
+  --surface-2: #1b2435;
+  --border: #2a3448;
+  --text: #e5e9f0;
+  --text-muted: #8b97ad;
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --primary-soft: rgba(99, 102, 241, 0.12);
+  --primary-border: rgba(99, 102, 241, 0.3);
+  --danger: #f87171;
+  --danger-soft: rgba(248, 113, 113, 0.1);
+  --danger-border: rgba(248, 113, 113, 0.35);
+  --radius: 12px;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
 * {
@@ -22,6 +24,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background-color: var(--bg);
+  background-image: radial-gradient(900px 500px at 50% -10%, rgba(99, 102, 241, 0.08), transparent 70%);
   color: var(--text);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -29,7 +32,8 @@ body {
 
 /* Cabecera */
 .app-header {
-  background: var(--surface);
+  background: rgba(13, 18, 30, 0.7);
+  backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border);
 }
 
@@ -48,6 +52,7 @@ body {
   font-size: 1.15rem;
   font-weight: 650;
   letter-spacing: -0.01em;
+  color: #f8fafc;
 }
 
 .brand p {
@@ -69,7 +74,8 @@ body {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #16a34a;
+  background: #34d399;
+  box-shadow: 0 0 8px rgba(52, 211, 153, 0.6);
   margin-right: 6px;
   vertical-align: middle;
 }
@@ -83,6 +89,7 @@ body {
 
 .container.narrow {
   max-width: 420px;
+  padding-top: 64px;
 }
 
 .card {
@@ -98,6 +105,7 @@ body {
   margin: 0 0 4px;
   font-size: 1rem;
   font-weight: 650;
+  color: #f1f5f9;
 }
 
 .card .hint {
@@ -116,15 +124,19 @@ label {
 
 input, textarea {
   width: 100%;
-  padding: 10px 12px;
+  padding: 11px 13px;
   margin-bottom: 14px;
   border: 1px solid var(--border);
   border-radius: 8px;
   font-size: 0.9rem;
   font-family: inherit;
   color: var(--text);
-  background: #fff;
+  background: var(--surface-2);
   transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #5b6782;
 }
 
 textarea {
@@ -136,27 +148,31 @@ textarea {
 input:focus, textarea:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
 button {
   background-color: var(--primary);
   color: #fff;
-  padding: 10px 18px;
+  padding: 11px 18px;
   border: none;
   border-radius: 8px;
   font-size: 0.9rem;
   font-weight: 550;
   cursor: pointer;
-  transition: background-color 0.15s;
+  transition: background-color 0.15s, transform 0.05s;
 }
 
 button:hover {
   background-color: var(--primary-hover);
 }
 
+button:active {
+  transform: translateY(1px);
+}
+
 button:disabled {
-  opacity: 0.6;
+  opacity: 0.55;
   cursor: not-allowed;
 }
 
@@ -169,7 +185,7 @@ button.ghost {
 }
 
 button.ghost:hover {
-  background: var(--bg);
+  background: var(--surface-2);
   color: var(--text);
 }
 
@@ -194,7 +210,7 @@ table.matrix td {
 }
 
 table.matrix tr:nth-child(even) td {
-  background: #f8fafc;
+  background: var(--surface-2);
 }
 
 /* Grid de estadísticas */
@@ -207,8 +223,8 @@ table.matrix tr:nth-child(even) td {
 
 .stat {
   background: var(--primary-soft);
-  border: 1px solid #dbeafe;
-  border-radius: 8px;
+  border: 1px solid var(--primary-border);
+  border-radius: 10px;
   padding: 12px 14px;
 }
 
@@ -216,7 +232,7 @@ table.matrix tr:nth-child(even) td {
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: var(--primary);
+  color: #a5b4fc;
   font-weight: 600;
   margin: 0 0 4px;
 }
@@ -224,6 +240,7 @@ table.matrix tr:nth-child(even) td {
 .stat .value {
   font-size: 1.05rem;
   font-weight: 650;
+  color: #f8fafc;
   font-family: "SFMono-Regular", Consolas, Menlo, monospace;
 }
 
@@ -235,8 +252,8 @@ table.matrix tr:nth-child(even) td {
   font-weight: 600;
 }
 
-.badge.yes { background: #dcfce7; color: #15803d; }
-.badge.no  { background: #f1f5f9; color: var(--text-muted); }
+.badge.yes { background: rgba(52, 211, 153, 0.15); color: #34d399; }
+.badge.no  { background: var(--surface-2); color: var(--text-muted); }
 
 /* Tabla compacta por matriz */
 .per-matrix {
@@ -259,6 +276,7 @@ table.summary th, table.summary td {
   border-bottom: 1px solid var(--border);
   padding: 8px 10px;
   text-align: right;
+  color: var(--text);
 }
 
 table.summary th {
