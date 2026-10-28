@@ -14,10 +14,14 @@ import (
 	"go-api/internal/qr"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 )
 
 func newApp() *fiber.App {
 	app := fiber.New()
+
+	// CORS: permite que el frontend (otro puerto/origen) consuma la API desde el navegador
+	app.Use(cors.New())
 
 	app.Get("/health", func(c *fiber.Ctx) error {
 		return c.JSON(fiber.Map{"status": "ok"})
