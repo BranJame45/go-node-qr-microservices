@@ -1,0 +1,21 @@
+# Documentación interna (no forma parte de la entrega)
+Docs/
+
+# Node
+node_modules/
+npm-debug.log*
+frontend/dist/
+
+# Go
+go-api/main
+go-api/main.exe
+*.test
+
+# Variables de entorno (nunca subir secretos reales)
+.env
+
+# Sistema / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
